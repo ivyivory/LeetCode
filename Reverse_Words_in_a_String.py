@@ -26,19 +26,21 @@ def reverseSentence(s):
     st = -1
     ed = -1
     for i in range(len(s)):
+        #if current location is first char and not space, update st
+        if i==0 and s[i]!=" ": st = i
+        
         #if the next char is the beginning of a word 
-        if i!=len(s)-1 and s[i]==" " and s[i+1] != " ":
-            st = i+1
+        if i!=len(s)-1 and s[i]==" " and s[i+1] != " ": st = i+1
         
         #if the next char is space, then current location is the end of the word
-        if i!=len(s)-1 and s[i]!=" " and s[i+1] == " ":
-            #due to the Python feature, has to +1 here
-            ed = i+1
+        #due to the Python feature, has to +1 here 
+        if i!=len(s)-1 and s[i]!=" " and s[i+1] == " ": ed = i+1
+            
         
         #if current location is the last char
         if i==len(s)-1:
             #if last char is not space and it is end of a word
-            if s[i]!=" " and st!=-1:
+            if s[i]!=" " and st!=-1: 
                 ed = i+1
             #if last char is not space and it is a single char word
             if s[i]!=" " and st==-1:
@@ -55,10 +57,9 @@ def reverseSentence(s):
             st = -1
             ed = -1
     
-    print result
     # delete the last space
-    if result and result[len(result)-1]==" ":
-        result = result[:-1]
+    #if result and result[len(result)-1]==" ":
+    result = result[:-1]
     return result
 
 #another way:
@@ -66,6 +67,6 @@ def reverseSentence(s):
 
 #print reversehelper("abcde")
 s = " the sky   is blue "
-s = " 1"
+s = "1 "
 print reverseSentence(s)
 #print ' '.join(s.strip().split()[::-1])
